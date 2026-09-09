@@ -32,5 +32,7 @@
       );
 
       nixosModules = import ./modules { inherit (nixpkgs) lib; };
+
+      homeManagerModules = import ./hm-modules { inherit (nixpkgs) lib; };
     };
 }
