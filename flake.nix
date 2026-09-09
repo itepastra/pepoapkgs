@@ -18,6 +18,17 @@
       forAllSystems = nixpkgs.lib.genAttrs systems;
     in
     {
-      packages = forAllSystems (system: import ./packages nixpkgs.legacyPackages.${system});
+      overlays = {
+        additions = final: prev: import ./additions final.pkgs;
+        modifications = final: prev: import ./modifications prev.pkgs;
+      };
+
+      packages = forAllSystems (
+        system:
+        let
+          pkgs = nixpkgs.legacyPackages.${system};
+        in
+        (import ./additions pkgs) // (import ./modifications pkgs)
+      );
     };
 }
