@@ -3,7 +3,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
   };
   outputs =
-    { self, nixpkgs, ... }@inputs:
+    { nixpkgs, ... }:
     let
       # Supported systems for your flake packages, shell, etc.
       systems = [
