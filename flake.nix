@@ -30,5 +30,7 @@
         in
         (import ./additions pkgs) // (import ./modifications pkgs)
       );
+
+      nixosModules = import ./modules { inherit (nixpkgs) lib; };
     };
 }
