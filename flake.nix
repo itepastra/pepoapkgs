@@ -19,8 +19,8 @@
     in
     {
       overlays = {
-        additions = final: prev: import ./additions final.pkgs;
-        modifications = final: prev: import ./modifications prev.pkgs;
+        additions = final: prev: import ./additions final;
+        modifications = final: prev: import ./modifications prev;
       };
 
       packages = forAllSystems (
