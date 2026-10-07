@@ -37,7 +37,14 @@
         (import ./additions pkgs) // (import ./modifications pkgs)
       );
 
-      nixosModules = import ./modules { inherit (nixpkgs) lib; };
+      nixosModules =
+        let
+          globs = import ./modules { inherit (nixpkgs) lib; };
+        in
+        globs
+        // {
+          default = nixpkgs.lib.mkMerge (nixpkgs.lib.map (x: x.value) (nixpkgs.lib.attrsToList globs));
+        };
 
       homeModules = import ./hm-modules { inherit (nixpkgs) lib; };
     };
