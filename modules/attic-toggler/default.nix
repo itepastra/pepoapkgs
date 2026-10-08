@@ -116,7 +116,6 @@ in
     publicKey = lib.mkOption {
       type = lib.types.str;
       default = "";
-      example = "anemone:f/wBQ8yB5geTn96NjwRfbcoEvr8QuykN0iu0Rf2zUC8=";
       description = "Trusted public key for the substituter.";
     };
     endpoint = lib.mkOption {
